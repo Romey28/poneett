@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAV College Identity Card</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            min-width: 0;
+        }
+
+        .card-container {
+            background-color: white;
+            width: 750px;
+            max-width: 100%;
+            padding: 25px 35px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .logo {
+            width: 60px;
+            height: 80px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            margin-bottom: 5px;
+            background: conic-gradient(#4caf50 0% 33%, #ffeb3b 33% 66%, #2196f3 66% 100%);
+        }
+        .college-info {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .college-info h1 {
+            color: #d32f2f;
+            font-size: 22px;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+        }
+        .college-info h2 {
+            color: #d32f2f;
+            font-size: 18px;
+            margin: 0;
+            font-weight: bold;
+        }
+        .sub-header {
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .divider {
+            border-top: 1px solid #283593;
+            margin-bottom: 15px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+        }
+        .details-table {
+            width: 70%;
+            border-collapse: collapse;
+        }
+        .details-table td {
+            padding: 8px 0;
+            font-size: 13px;
+            vertical-align: top;
+            color: #000;
+        }
+        .details-table td:first-child {
+            font-weight: bold;
+            width: 35%;
+        }
+        .photo-box-container {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-top: 10px;
+        }
+        .photo-box {
+            width: 130px;
+            max-width: 100%;
+            height: 150px;
+            border: 1px solid #000;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1976d2;
+            font-size: 18px;
+        }
+        .sign-box {
+            width: 130px;
+            max-width: 100%;
+            height: 35px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1976d2;
+            font-size: 18px;
+        }
+        .footer {
+            text-align: center;
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 25px;
+        }
+        .footer-divider {
+            border-top: 1px solid #283593;
+            margin-top: 10px;
+        }
+
+        /* Responsive layout: keeps the same section positions and overall format */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .card-container {
+                padding: 18px 15px;
+            }
+
+            .header {
+                align-items: center;
+            }
+
+            .logo {
+                width: 55px;
+                height: 70px;
+                flex-shrink: 0;
+            }
+
+            .logo img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .college-info h1 {
+                font-size: clamp(14px, 4.2vw, 22px);
+                line-height: 1.2;
+            }
+
+            .college-info h2 {
+                font-size: clamp(12px, 3.5vw, 18px);
+            }
+
+            .sub-header {
+                font-size: clamp(10px, 3vw, 13px);
+                margin-top: 12px;
+                margin-bottom: 8px;
+            }
+
+            .divider {
+                margin-bottom: 10px;
+            }
+
+            .details-table td {
+                font-size: clamp(10px, 2.8vw, 13px);
+                padding: 6px 0;
+                overflow-wrap: anywhere;
+            }
+
+            .details-table td:first-child {
+                width: 35%;
+                padding-right: 6px;
+            }
+
+            .photo-box-container {
+                padding-top: 6px;
+            }
+
+            .photo-box {
+                width: clamp(75px, 22vw, 120px);
+                height: clamp(90px, 25vw, 140px);
+                font-size: clamp(14px, 4vw, 18px);
+            }
+
+            .sign-box {
+                width: clamp(75px, 20vw, 110px);
+                height: clamp(20px, 7vw, 35px);
+                font-size: clamp(14px, 4vw, 18px);
+            }
+
+            .footer {
+                font-size: clamp(16px, 5vw, 20px);
+                margin-top: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card-container {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .logo {
+                width: 48px;
+                height: 62px;
+            }
+
+            .logo img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .college-info h1 {
+                font-size: 13px;
+            }
+
+            .college-info h2 {
+                font-size: 11px;
+            }
+
+            .details-table td {
+                font-size: 9px;
+            }
+
+            .photo-box {
+                width: 70px;
+                height: 85px;
+            }
+
+            .sign-box {
+                width: 70px;
+                height: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="header">
+        <div class="logo">
+            <img src="logo.png" width="100" height="100">
+        </div>
+        <div class="college-info">
+            <h1>DAV COLLEGE, SECTOR 10, CHANDIGARH</h1>
+            <h2>Session : 2026-2027</h2>
+        </div>
+    </div>
+    
+    <div class="sub-header">
+       
+    </div>
+    <div class="divider"></div>
+
+    <div class="content">
+        <table class="details-table">
+            <tr>
+                <td>Enrolment No</td>
+                <td>79478</td>
+            </tr>
+            <tr>
+                <td>Roll No</td>
+                <td>17312</td>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td>BSC-Part I</td>
+            </tr>
+            <tr>
+                <td>Student Name</td>
+                <td>PONEET SINGH</td>
+            </tr>
+            <tr>
+                <td>Father Name</td>
+                <td>ROOP SINGH</td>
+            </tr>
+            <tr>
+                <td>Mother Name</td>
+                <td>DALWINDER KAUR</td>
+            </tr>
+            <tr>
+                <td>Mobile No.</td>
+                <td>7717650392</td>
+            </tr>
+            <tr>
+                <td>Father Mobile No.</td>
+                <td>9888438293</td>
+            </tr>
+            <tr>
+                <td>Permanent Address</td>
+                <td>NEW SOOD COLONY ,Morinda</td>
+            </tr>
+            <tr>
+                <td>Correspondence Address</td>
+                <td>NEW SOOOD COLONY ,Morinda</td>
+            </tr>
+        </table>
+
+        <div class="photo-box-container">
+            <div class="photo-box">?</div>
+            <div class="sign-box">?</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Verified
+    </div>
+    <div class="footer-divider"></div>
+</div>
+
+</body>
+</html>
+
+```
